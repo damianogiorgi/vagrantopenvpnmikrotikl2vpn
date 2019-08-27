@@ -1,0 +1,12 @@
+/interface bridge
+add name=bridge1
+/interface eoip
+add mac-address=02:B7:87:72:22:B9 name=eoip-tunnel1 remote-address=192.168.201.11 tunnel-id=0
+/interface bridge port
+add bridge=bridge1 interface=eoip-tunnel1
+add bridge=bridge1 interface=ether4
+/ip address
+add address=192.168.202.12/24 interface=ether3 network=192.168.202.0
+/ip route
+add distance=1 gateway=192.168.202.1
+
